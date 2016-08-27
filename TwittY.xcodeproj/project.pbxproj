@@ -13,6 +13,7 @@
 		592D38E91D71876600CC988D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592D38D61D71876600CC988D /* AppDelegate.swift */; };
 		592D38EE1D71880F00CC988D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 592D38EC1D71880F00CC988D /* Main.storyboard */; };
 		592D39061D71897C00CC988D /* TweetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592D39051D71897C00CC988D /* TweetListViewController.swift */; };
+		592D39091D71FC0B00CC988D /* TwittYxStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592D39081D71FC0B00CC988D /* TwittYxStyleKit.swift */; };
 		E799A9089A8690D447A79DB4 /* Pods_TwittY.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA6D1F8EE0FA4CF99C0972E /* Pods_TwittY.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		592D38D61D71876600CC988D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		592D38ED1D71880F00CC988D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = TwittY/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		592D39051D71897C00CC988D /* TweetListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetListViewController.swift; sourceTree = "<group>"; };
+		592D39081D71FC0B00CC988D /* TwittYxStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwittYxStyleKit.swift; sourceTree = "<group>"; };
 		C9AE75263171EEF62B712935 /* Pods-TwittY.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwittY.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwittY/Pods-TwittY.debug.xcconfig"; sourceTree = "<group>"; };
 		EDA6D1F8EE0FA4CF99C0972E /* Pods_TwittY.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwittY.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -258,6 +260,7 @@
 		592D38E81D71876600CC988D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				592D39081D71FC0B00CC988D /* TwittYxStyleKit.swift */,
 				592D38EC1D71880F00CC988D /* Main.storyboard */,
 				592D38BE1D71845400CC988D /* LaunchScreen.storyboard */,
 				592D38BC1D71845400CC988D /* Assets.xcassets */,
@@ -526,6 +529,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				592D39091D71FC0B00CC988D /* TwittYxStyleKit.swift in Sources */,
 				592D39061D71897C00CC988D /* TweetListViewController.swift in Sources */,
 				592D38E91D71876600CC988D /* AppDelegate.swift in Sources */,
 			);

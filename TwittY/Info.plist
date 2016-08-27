@@ -20,6 +20,17 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>twitterkit-2KRhl1zHE88uoeDnB9p4b674L</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>Fabric</key>
@@ -31,10 +42,10 @@
 			<dict>
 				<key>KitInfo</key>
 				<dict>
-					<key>2KRhl1zHE88uoeDnB9p4b674L</key>
-					<string></string>
-					<key>R0LOtOwr3yerTtI7li3art4FQ9ZgD96Gv1DgtLp0MgCBfNVyYc</key>
-					<string></string>
+					<key>consumerKey</key>
+					<string>2KRhl1zHE88uoeDnB9p4b674L</string>
+					<key>consumerSecret</key>
+					<string>R0LOtOwr3yerTtI7li3art4FQ9ZgD96Gv1DgtLp0MgCBfNVyYc</string>
 				</dict>
 				<key>KitName</key>
 				<string>Twitter</string>

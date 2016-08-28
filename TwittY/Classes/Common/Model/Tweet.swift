@@ -9,9 +9,11 @@
 import Foundation
 
 struct Tweet {
-    let text:String?
     
-    init(text:String?) {
-        self.text = text
-    }
+    let tweetId: UInt64
+    let text:String?
+    let tweetDate: NSDate
+    
+    let user: User
 }
+

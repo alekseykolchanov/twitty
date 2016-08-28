@@ -33,6 +33,9 @@
 		592D39391D7220C500CC988D /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592D39381D7220C500CC988D /* LoginInteractor.swift */; };
 		592D393C1D72BE3900CC988D /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592D393B1D72BE3900CC988D /* TweetTableViewCell.swift */; };
 		592D39601D72E34800CC988D /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592D395F1D72E34800CC988D /* UITableViewExtension.swift */; };
+		59E86FB91D73071A006FE308 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E86FB81D73071A006FE308 /* ListInteractor.swift */; };
+		59E86FBB1D732CED006FE308 /* NSErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E86FBA1D732CED006FE308 /* NSErrorExtension.swift */; };
+		59E86FBD1D73584F006FE308 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E86FBC1D73584F006FE308 /* User.swift */; };
 		E799A9089A8690D447A79DB4 /* Pods_TwittY.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA6D1F8EE0FA4CF99C0972E /* Pods_TwittY.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +81,9 @@
 		592D39381D7220C500CC988D /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		592D393B1D72BE3900CC988D /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		592D395F1D72E34800CC988D /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		59E86FB81D73071A006FE308 /* ListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
+		59E86FBA1D732CED006FE308 /* NSErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorExtension.swift; sourceTree = "<group>"; };
+		59E86FBC1D73584F006FE308 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C9AE75263171EEF62B712935 /* Pods-TwittY.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwittY.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwittY/Pods-TwittY.debug.xcconfig"; sourceTree = "<group>"; };
 		EDA6D1F8EE0FA4CF99C0972E /* Pods_TwittY.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwittY.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -230,6 +236,7 @@
 		592D38DF1D71876600CC988D /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				59E86FB81D73071A006FE308 /* ListInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -504,6 +511,7 @@
 			children = (
 				592D39271D720BB800CC988D /* UIStoryboardExtension.swift */,
 				592D395F1D72E34800CC988D /* UITableViewExtension.swift */,
+				59E86FBA1D732CED006FE308 /* NSErrorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -512,6 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				592D39321D72183600CC988D /* Tweet.swift */,
+				59E86FBC1D73584F006FE308 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -702,6 +711,7 @@
 				592D39301D7215C300CC988D /* LoginPresenter.swift in Sources */,
 				592D39181D72098300CC988D /* ListPresenter.swift in Sources */,
 				592D39141D72087500CC988D /* AppDependencies.swift in Sources */,
+				59E86FBD1D73584F006FE308 /* User.swift in Sources */,
 				592D39351D7218E400CC988D /* ListModuleInterface.swift in Sources */,
 				592D39091D71FC0B00CC988D /* TwittYxStyleKit.swift in Sources */,
 				592D39601D72E34800CC988D /* UITableViewExtension.swift in Sources */,
@@ -716,9 +726,11 @@
 				592D392E1D7214D100CC988D /* LoginModuleInterface.swift in Sources */,
 				592D38E91D71876600CC988D /* AppDelegate.swift in Sources */,
 				592D39281D720BB800CC988D /* UIStoryboardExtension.swift in Sources */,
+				59E86FBB1D732CED006FE308 /* NSErrorExtension.swift in Sources */,
 				592D392C1D720F9E00CC988D /* BaseWireframe.swift in Sources */,
 				592D39251D720A0000CC988D /* DetailWireframe.swift in Sources */,
 				592D392A1D720EE700CC988D /* LoginWireframe.swift in Sources */,
+				59E86FB91D73071A006FE308 /* ListInteractor.swift in Sources */,
 				592D39371D72198F00CC988D /* TwitterAPIManager.swift in Sources */,
 				592D393C1D72BE3900CC988D /* TweetTableViewCell.swift in Sources */,
 			);

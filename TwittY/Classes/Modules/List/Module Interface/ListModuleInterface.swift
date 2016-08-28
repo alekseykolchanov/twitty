@@ -10,4 +10,9 @@ import Foundation
 
 protocol ListModuleInterface {
     
+    func settingsAction()
+    func searchAction()
+    func selectTweetAction(tweet:Tweet)
+    
+    func updateViewOnAppear()
 }

@@ -144,6 +144,9 @@
                             <constraint firstItem="tgV-hv-yBw" firstAttribute="top" secondItem="aur-eW-RbA" secondAttribute="bottom" id="dZn-SL-Cld"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="aur-eW-RbA" id="eTI-bW-6Cg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D9S-CS-79j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

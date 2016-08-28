@@ -20,10 +20,6 @@ class RootWireframe : BaseWireframe {
     func showRootViewController(viewController: UIViewController, inWindow: UIWindow) {
         let navigationController = navigationControllerFromWindow(inWindow)
         navigationController.viewControllers = [viewController]
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(3 * NSEC_PER_SEC)), dispatch_get_main_queue()) {
-            self.presentLoginViewControllerFromViewController(viewController)
-        }
     }
     
     func navigationControllerFromWindow(window: UIWindow) -> UINavigationController {

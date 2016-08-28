@@ -22,9 +22,11 @@ class AppDependencies {
     
     func configureDependencies() {
         
-        let twitterAPIManager = TwitterAPIManager()
-        
         let rootWireframe = RootWireframe()
+        
+        
+        let listPresenter = ListPresenter()
+        let listInteractor = ListInteractor()
         
         let loginWireframe = LoginWireframe()
         let loginPresenter = LoginPresenter()
@@ -38,10 +40,14 @@ class AppDependencies {
         
         listWireframe.detailWireframe = detailWireframe
         listWireframe.rootWireframe = rootWireframe
+        listWireframe.listPresenter = listPresenter
         
+        listInteractor.twitterApiManager = TwitterAPIManager.sharedInstance
+        listPresenter.listWireframe = listWireframe
+        listPresenter.listInteractor = listInteractor
         
         loginWireframe.loginPresenter = loginPresenter
-        loginInteractor.loginManager = twitterAPIManager
+        loginInteractor.loginManager = TwitterAPIManager.sharedInstance
         loginPresenter.loginWireframe = loginWireframe
         loginPresenter.loginInteractor = loginInteractor
         

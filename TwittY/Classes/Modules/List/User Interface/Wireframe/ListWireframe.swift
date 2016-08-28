@@ -16,14 +16,14 @@ class ListWireframe: BaseWireframe {
     
     func presentListInterfaceFromWindow(window: UIWindow) {
         let viewController = listViewControllerFromStoryboard()
-//        viewController.eventHandler = listPresenter
+        viewController.eventHandler = listPresenter
         listViewController = viewController
 //        listPresenter!.userInterface = viewController
         rootWireframe?.showRootViewController(viewController, inWindow: window)
     }
     
-    func showDetailInterface() {
-        detailWireframe?.showDetailInterfaceFromViewController(listViewController!, withTweet: Tweet(text: ""))
+    func showDetailInterface(tweet:Tweet) {
+        detailWireframe?.showDetailInterfaceFromViewController(listViewController!, withTweet: tweet)
     }
     
     func listViewControllerFromStoryboard() -> ListViewController {

@@ -106,6 +106,26 @@ public class TwittYxStyleKit : NSObject {
 
     //// Generated Images
 
+    public class func imageOfLogoBlue(frame frame: CGRect = CGRect(x: 0, y: 0, width: 49, height: 40)) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, 0)
+            TwittYxStyleKit.drawLogoBlue(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+
+        let imageOfLogoBlue = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return imageOfLogoBlue
+    }
+
+    public class func imageOfLogoWhite(frame frame: CGRect = CGRect(x: 0, y: 0, width: 49, height: 40)) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, 0)
+            TwittYxStyleKit.drawLogoWhite(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height))
+
+        let imageOfLogoWhite = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return imageOfLogoWhite
+    }
+
     public class var imageOfPixelPrimaryColor: UIImage {
         if Cache.imageOfPixelPrimaryColor != nil {
             return Cache.imageOfPixelPrimaryColor!

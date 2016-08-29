@@ -15,4 +15,8 @@ protocol ListViewInterface {
     
     func showDownloadAtBottom()
     func hideDownloadAtBottom()
+    
+    func showDownloadAtTop()
+    func hideDownloadAtTop()
+    
 }

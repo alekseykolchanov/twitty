@@ -18,10 +18,19 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
     
     @IBOutlet weak var tableView: UITableView!
     weak var footerView: AutogrowingTableViewFooterView!
+    weak var refreshControl: UIRefreshControl!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //navigationController?.hidesBarsOnSwipe = true
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl)
+        self.refreshControl = refreshControl
+        
         let footerView = AutogrowingTableViewFooterView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 70.0))
         tableView.tableFooterView = footerView
         self.footerView = footerView
@@ -51,6 +60,9 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
         eventHandler?.settingsAction()
     }
     
+    func refresh(sender:AnyObject?) {
+        eventHandler?.refreshOnTop()
+    }
     
     //Invoke in case IsShowAvatar setting did chage
     func reload() {
@@ -96,7 +108,7 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 90
+        return 110
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -107,11 +119,19 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
     //ListViewInterface
     func addItemsAtIndexes(indexSet:NSIndexSet) {
         let indexPaths = indextSetToIndextPathArray(indexSet)
-        tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Bottom)
+        tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
     }
     
     func reloadItems() {
         tableView.reloadData()
+    }
+    
+    func showDownloadAtTop() {
+        refreshControl.beginRefreshing()
+    }
+    
+    func hideDownloadAtTop() {
+        refreshControl.endRefreshing()
     }
     
     func showDownloadAtBottom() {

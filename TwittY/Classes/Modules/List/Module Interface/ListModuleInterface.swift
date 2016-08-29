@@ -15,4 +15,5 @@ protocol ListModuleInterface {
     func selectTweetAction(tweet:Tweet)
     
     func updateViewOnAppear()
+    func refreshOnTop()
 }

@@ -77,11 +77,31 @@ class ListPresenter: ListModuleInterface, TableViewDataSourceProtocol {
         self.listInteractor?.getHomeTweets(nil, sinceTweetId: self.tweets.first?.tweetId, completion: { (recievedTweets, noMore, error) in
             dispatch_async(dispatch_get_main_queue(), {
                 if (error == nil) {
+                    if !noMore {
+                        self.tweets = []
+                        self.userInterface?.reloadItems()
+                    }
                     self.addTweets(recievedTweets)
                 }
             })
         })
         
+    }
+    
+    func refreshOnTop() {
+        self.listInteractor?.getHomeTweets(nil, sinceTweetId: self.tweets.first?.tweetId, completion: { (recievedTweets, noMore, error) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if (error == nil) {
+                    if !noMore {
+                        self.tweets = []
+                        self.userInterface?.reloadItems()
+                    }
+                    self.addTweets(recievedTweets)
+                }
+                
+                self.userInterface?.hideDownloadAtTop()
+            })
+        })
     }
     
     //tableView data source

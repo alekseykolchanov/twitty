@@ -57,7 +57,11 @@ class TwitterAPIManager {
     
     //Log in/Log out
     var isLoggedIn: Bool {
-        return Twitter.sharedInstance().sessionStore.existingUserSessions().count > 0
+        if TWTRAPIClient.clientWithCurrentUser().userID != nil  {
+            return true
+        }
+        return false
+        
     }
     
     func login(completion:(Bool, NSError?)->Void) {

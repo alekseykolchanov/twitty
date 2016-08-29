@@ -33,6 +33,9 @@
 		592D39391D7220C500CC988D /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592D39381D7220C500CC988D /* LoginInteractor.swift */; };
 		592D393C1D72BE3900CC988D /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592D393B1D72BE3900CC988D /* TweetTableViewCell.swift */; };
 		592D39601D72E34800CC988D /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592D395F1D72E34800CC988D /* UITableViewExtension.swift */; };
+		59B794E91D743CFB00015625 /* DictionaryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B794E81D743CFB00015625 /* DictionaryCache.swift */; };
+		59B794EB1D7440A800015625 /* ImageSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B794EA1D7440A800015625 /* ImageSource.swift */; };
+		59B794ED1D744D5A00015625 /* ListViewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B794EC1D744D5A00015625 /* ListViewEntity.swift */; };
 		59E86FB91D73071A006FE308 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E86FB81D73071A006FE308 /* ListInteractor.swift */; };
 		59E86FBB1D732CED006FE308 /* NSErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E86FBA1D732CED006FE308 /* NSErrorExtension.swift */; };
 		59E86FBD1D73584F006FE308 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E86FBC1D73584F006FE308 /* User.swift */; };
@@ -85,6 +88,9 @@
 		592D39381D7220C500CC988D /* LoginInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		592D393B1D72BE3900CC988D /* TweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		592D395F1D72E34800CC988D /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		59B794E81D743CFB00015625 /* DictionaryCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryCache.swift; sourceTree = "<group>"; };
+		59B794EA1D7440A800015625 /* ImageSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSource.swift; sourceTree = "<group>"; };
+		59B794EC1D744D5A00015625 /* ListViewEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewEntity.swift; sourceTree = "<group>"; };
 		59E86FB81D73071A006FE308 /* ListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
 		59E86FBA1D732CED006FE308 /* NSErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorExtension.swift; sourceTree = "<group>"; };
 		59E86FBC1D73584F006FE308 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -189,6 +195,7 @@
 		592D38D91D71876600CC988D /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				59B794E81D743CFB00015625 /* DictionaryCache.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -305,6 +312,7 @@
 				592D39051D71897C00CC988D /* ListViewController.swift */,
 				59E86FC21D7419B3006FE308 /* ListViewInterface.swift */,
 				59E86FC41D742300006FE308 /* AutogrowingTableViewFooterView.swift */,
+				59B794EC1D744D5A00015625 /* ListViewEntity.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -426,6 +434,7 @@
 				592D390F1D72039F00CC988D /* LocalizeManager.swift */,
 				592D39361D72198F00CC988D /* TwitterAPIManager.swift */,
 				59E86FC01D7402C7006FE308 /* SettingsManager.swift */,
+				59B794EA1D7440A800015625 /* ImageSource.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -723,6 +732,7 @@
 				592D39301D7215C300CC988D /* LoginPresenter.swift in Sources */,
 				592D39181D72098300CC988D /* ListPresenter.swift in Sources */,
 				592D39141D72087500CC988D /* AppDependencies.swift in Sources */,
+				59B794ED1D744D5A00015625 /* ListViewEntity.swift in Sources */,
 				59E86FBD1D73584F006FE308 /* User.swift in Sources */,
 				592D39351D7218E400CC988D /* ListModuleInterface.swift in Sources */,
 				592D39091D71FC0B00CC988D /* TwittYxStyleKit.swift in Sources */,
@@ -743,8 +753,10 @@
 				59E86FBB1D732CED006FE308 /* NSErrorExtension.swift in Sources */,
 				592D392C1D720F9E00CC988D /* BaseWireframe.swift in Sources */,
 				59E86FBF1D73FFF5006FE308 /* TableViewDataSourceProtocol.swift in Sources */,
+				59B794E91D743CFB00015625 /* DictionaryCache.swift in Sources */,
 				59E86FC31D7419B3006FE308 /* ListViewInterface.swift in Sources */,
 				592D39251D720A0000CC988D /* DetailWireframe.swift in Sources */,
+				59B794EB1D7440A800015625 /* ImageSource.swift in Sources */,
 				592D392A1D720EE700CC988D /* LoginWireframe.swift in Sources */,
 				59E86FB91D73071A006FE308 /* ListInteractor.swift in Sources */,
 				592D39371D72198F00CC988D /* TwitterAPIManager.swift in Sources */,

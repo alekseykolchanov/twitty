@@ -13,12 +13,12 @@ class ListWireframe: BaseWireframe {
     var listPresenter : ListPresenter?
     var rootWireframe : RootWireframe?
     var listViewController : ListViewController?
+    var loginWireframe: LoginWireframe?
     
     func presentListInterfaceFromWindow(window: UIWindow) {
         let viewController = listViewControllerFromStoryboard()
         viewController.eventHandler = listPresenter
         viewController.tableDataSource = listPresenter
-        viewController.settingsManager = SettingsManager.sharedInstance
         listViewController = viewController
         listPresenter?.userInterface = viewController
         rootWireframe?.showRootViewController(viewController, inWindow: window)
@@ -26,6 +26,10 @@ class ListWireframe: BaseWireframe {
     
     func showDetailInterface(tweet:Tweet) {
         detailWireframe?.showDetailInterfaceFromViewController(listViewController!, withTweet: tweet)
+    }
+    
+    func presentLoginInterface() {
+        loginWireframe?.presentLoginInterfaceFromViewController(listViewController!)
     }
     
     func listViewControllerFromStoryboard() -> ListViewController {

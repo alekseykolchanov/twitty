@@ -12,14 +12,24 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
 
     var eventHandler: ListModuleInterface?
     var tableDataSource: TableViewDataSourceProtocol?
-    var settingsManager: SettingsManager?
-    
-    var showAvatar: Bool = true
     
     @IBOutlet weak var tableView: UITableView!
     weak var footerView: AutogrowingTableViewFooterView!
     weak var refreshControl: UIRefreshControl!
     
+    var showAvatars: Bool = false {
+        didSet {
+            dispatch_async(dispatch_get_main_queue()) {
+                if let visibleCells = self.tableView.visibleCells as? [TweetTableViewCell] {
+                    self.tableView.beginUpdates()
+                    for cell in visibleCells {
+                        cell.showAvatar = self.showAvatars
+                    }
+                    self.tableView.endUpdates()
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +68,8 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
     
     func settingsBarButtonItemTapped() {
         eventHandler?.settingsAction()
+        
+        showAvatars = !showAvatars
     }
     
     func refresh(sender:AnyObject?) {
@@ -65,12 +77,19 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     //Invoke in case IsShowAvatar setting did chage
-    func reload() {
+    func updateVisibleItems() {
         
-        if let visibleCells = tableView.visibleCells as? [TweetTableViewCell] {
+        if let visibleCellIndexPaths = tableView.indexPathsForVisibleRows {
+            
             tableView.beginUpdates()
-            for cell in visibleCells {
-                cell.showAvatar = showAvatar
+            for indexPath in visibleCellIndexPaths {
+                
+                guard let cell = tableView.cellForRowAtIndexPath(indexPath) as? TweetTableViewCell,
+                let entity = tableDataSource?.itemAtIndex(indexPath.item) as? ListViewEntity else{
+                    continue
+                }
+                
+                setupTweetCell(cell, entity: entity)
             }
             tableView.endUpdates()
         }
@@ -85,21 +104,23 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCellIdentifier(TableViewCellIdentifier.Tweet) as? TweetTableViewCell,
-            let tweet = tableDataSource?.itemAtIndex(indexPath.item) as? Tweet else {
+            let entity = tableDataSource?.itemAtIndex(indexPath.item) as? ListViewEntity else {
                 return UITableViewCell(style: .Default, reuseIdentifier: "")
         }
         
-        setupTweetCell(cell, tweet: tweet)
+        setupTweetCell(cell, entity: entity)
         
         return cell
     }
     
-    func setupTweetCell(cell:TweetTableViewCell, tweet: Tweet) {
-        cell.userNameLabel.text = tweet.user.userName
-        cell.userIdLabel.text = "@"+tweet.user.userAtName
-        cell.tweetTextLabel.text = tweet.text
-        cell.dateLabel.text = "\(tweet.tweetDate)"
-        cell.showAvatar = settingsManager?.showAvatar ?? false
+    func setupTweetCell(cell:TweetTableViewCell, entity: ListViewEntity) {
+        cell.userNameLabel.text = entity.userName
+        cell.userIdLabel.text = entity.userAtName
+        cell.tweetTextLabel.text = entity.tweetText
+        cell.dateLabel.text = entity.dateString
+        cell.tweetId = entity.tweetId
+        cell.avatarImageView?.image = entity.avatarImage
+        cell.showAvatar = self.showAvatars
     }
     
     //UITableViewDelegate
@@ -122,6 +143,18 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
         tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .None)
     }
     
+    func updateItemImageAtIndexes(indexSet:NSIndexSet) {
+        let indexPaths = indextSetToIndextPathArray(indexSet)
+        
+        for indexPath in indexPaths {
+            if let cell = tableView.cellForRowAtIndexPath(indexPath) as? TweetTableViewCell,
+                let entity = tableDataSource?.itemAtIndex(indexPath.item) as? ListViewEntity {
+                cell.avatarImageView?.image = entity.avatarImage
+            }
+        }
+        
+    }
+    
     func reloadItems() {
         tableView.reloadData()
     }
@@ -141,6 +174,11 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
     func hideDownloadAtBottom() {
         footerView.state = .Idle
     }
+    
+    func showAvatars(isShow:Bool) {
+        showAvatars = isShow
+    }
+
     
     //Helpers
     func indextSetToIndextPathArray(indexSet:NSIndexSet)->[NSIndexPath] {

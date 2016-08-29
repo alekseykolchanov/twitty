@@ -20,3 +20,12 @@ enum TwitterAPIManagerError: Int, ErrorFactory {
     }
 }
 
+enum ImageSourceError: Int, ErrorFactory {
+    case Unknown = 0
+    case UrlIsWrong = 1
+    case ReceivedDataIsBad = 2
+    func error() -> NSError {
+        return NSError(domain: "ImageSourceError", code: self.rawValue, userInfo: nil)
+    }
+}
+

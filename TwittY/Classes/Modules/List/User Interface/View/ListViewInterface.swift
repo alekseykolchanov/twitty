@@ -11,7 +11,11 @@ import UIKit
 protocol ListViewInterface {
     
     func addItemsAtIndexes(indexSet:NSIndexSet)
+    func updateItemImageAtIndexes(indexSet:NSIndexSet)
+    
     func reloadItems ()
+    
+    func showAvatars(isShow:Bool)
     
     func showDownloadAtBottom()
     func hideDownloadAtBottom()

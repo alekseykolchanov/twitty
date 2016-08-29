@@ -41,6 +41,7 @@ class AppDependencies {
         listWireframe.detailWireframe = detailWireframe
         listWireframe.rootWireframe = rootWireframe
         listWireframe.listPresenter = listPresenter
+        listWireframe.loginWireframe = loginWireframe
         
         listInteractor.twitterApiManager = TwitterAPIManager.sharedInstance
         listPresenter.listWireframe = listWireframe

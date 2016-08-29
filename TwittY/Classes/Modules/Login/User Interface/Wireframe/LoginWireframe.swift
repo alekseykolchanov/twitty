@@ -20,7 +20,6 @@ class LoginWireframe: BaseWireframe {
     func presentLoginInterfaceFromViewController(viewController:UIViewController) {
         let loginViewController = viewControllerFromStoryboard(.Login) as! LoginViewController
         loginViewController.eventHandler = loginPresenter
-//        listPresenter!.userInterface = viewController
         presentedViewController = loginViewController
         viewController.presentViewController(loginViewController, animated: false, completion: nil)
     }

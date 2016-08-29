@@ -12,6 +12,10 @@ class ListInteractor {
     
     var twitterApiManager: TwitterAPIManager?
     
+    func isRequiresLogin()->Bool {
+        return !(twitterApiManager?.isLoggedIn ?? false)
+    }
+    
     func getHomeTweets(maxTweetId: UInt64?, sinceTweetId: UInt64?, completion:([Tweet], Bool, NSError?)->Void) {
         do {
             try twitterApiManager?.getHomeTimelineTweets(maxTweetId, sinceTweetId: sinceTweetId, completion: { (tweets, noMore, error) in

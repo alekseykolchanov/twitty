@@ -36,6 +36,10 @@
 		59E86FB91D73071A006FE308 /* ListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E86FB81D73071A006FE308 /* ListInteractor.swift */; };
 		59E86FBB1D732CED006FE308 /* NSErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E86FBA1D732CED006FE308 /* NSErrorExtension.swift */; };
 		59E86FBD1D73584F006FE308 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E86FBC1D73584F006FE308 /* User.swift */; };
+		59E86FBF1D73FFF5006FE308 /* TableViewDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E86FBE1D73FFF5006FE308 /* TableViewDataSourceProtocol.swift */; };
+		59E86FC11D7402C7006FE308 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E86FC01D7402C7006FE308 /* SettingsManager.swift */; };
+		59E86FC31D7419B3006FE308 /* ListViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E86FC21D7419B3006FE308 /* ListViewInterface.swift */; };
+		59E86FC51D742300006FE308 /* AutogrowingTableViewFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E86FC41D742300006FE308 /* AutogrowingTableViewFooterView.swift */; };
 		E799A9089A8690D447A79DB4 /* Pods_TwittY.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA6D1F8EE0FA4CF99C0972E /* Pods_TwittY.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +88,10 @@
 		59E86FB81D73071A006FE308 /* ListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListInteractor.swift; sourceTree = "<group>"; };
 		59E86FBA1D732CED006FE308 /* NSErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSErrorExtension.swift; sourceTree = "<group>"; };
 		59E86FBC1D73584F006FE308 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		59E86FBE1D73FFF5006FE308 /* TableViewDataSourceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewDataSourceProtocol.swift; sourceTree = "<group>"; };
+		59E86FC01D7402C7006FE308 /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		59E86FC21D7419B3006FE308 /* ListViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewInterface.swift; sourceTree = "<group>"; };
+		59E86FC41D742300006FE308 /* AutogrowingTableViewFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutogrowingTableViewFooterView.swift; sourceTree = "<group>"; };
 		C9AE75263171EEF62B712935 /* Pods-TwittY.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwittY.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TwittY/Pods-TwittY.debug.xcconfig"; sourceTree = "<group>"; };
 		EDA6D1F8EE0FA4CF99C0972E /* Pods_TwittY.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwittY.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -192,6 +200,7 @@
 				592D39111D7207AA00CC988D /* RootWireframe.swift */,
 				592D38DB1D71876600CC988D /* Custom View */,
 				592D390A1D72026F00CC988D /* BaseViewController.swift */,
+				59E86FBE1D73FFF5006FE308 /* TableViewDataSourceProtocol.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +303,8 @@
 			children = (
 				592D393A1D72BE1300CC988D /* Cell */,
 				592D39051D71897C00CC988D /* ListViewController.swift */,
+				59E86FC21D7419B3006FE308 /* ListViewInterface.swift */,
+				59E86FC41D742300006FE308 /* AutogrowingTableViewFooterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -414,6 +425,7 @@
 			children = (
 				592D390F1D72039F00CC988D /* LocalizeManager.swift */,
 				592D39361D72198F00CC988D /* TwitterAPIManager.swift */,
+				59E86FC01D7402C7006FE308 /* SettingsManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -715,6 +727,7 @@
 				592D39351D7218E400CC988D /* ListModuleInterface.swift in Sources */,
 				592D39091D71FC0B00CC988D /* TwittYxStyleKit.swift in Sources */,
 				592D39601D72E34800CC988D /* UITableViewExtension.swift in Sources */,
+				59E86FC51D742300006FE308 /* AutogrowingTableViewFooterView.swift in Sources */,
 				592D39161D7208F800CC988D /* ListWireframe.swift in Sources */,
 				592D39331D72183600CC988D /* Tweet.swift in Sources */,
 				592D390B1D72026F00CC988D /* BaseViewController.swift in Sources */,
@@ -725,9 +738,12 @@
 				592D39101D72039F00CC988D /* LocalizeManager.swift in Sources */,
 				592D392E1D7214D100CC988D /* LoginModuleInterface.swift in Sources */,
 				592D38E91D71876600CC988D /* AppDelegate.swift in Sources */,
+				59E86FC11D7402C7006FE308 /* SettingsManager.swift in Sources */,
 				592D39281D720BB800CC988D /* UIStoryboardExtension.swift in Sources */,
 				59E86FBB1D732CED006FE308 /* NSErrorExtension.swift in Sources */,
 				592D392C1D720F9E00CC988D /* BaseWireframe.swift in Sources */,
+				59E86FBF1D73FFF5006FE308 /* TableViewDataSourceProtocol.swift in Sources */,
+				59E86FC31D7419B3006FE308 /* ListViewInterface.swift in Sources */,
 				592D39251D720A0000CC988D /* DetailWireframe.swift in Sources */,
 				592D392A1D720EE700CC988D /* LoginWireframe.swift in Sources */,
 				59E86FB91D73071A006FE308 /* ListInteractor.swift in Sources */,

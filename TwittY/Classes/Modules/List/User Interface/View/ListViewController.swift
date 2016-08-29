@@ -8,18 +8,23 @@
 
 import UIKit
 
-class ListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class ListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ListViewInterface {
 
     var eventHandler: ListModuleInterface?
+    var tableDataSource: TableViewDataSourceProtocol?
+    var settingsManager: SettingsManager?
     
     var showAvatar: Bool = true
     
     @IBOutlet weak var tableView: UITableView!
+    weak var footerView: AutogrowingTableViewFooterView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
+        let footerView = AutogrowingTableViewFooterView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 70.0))
+        tableView.tableFooterView = footerView
+        self.footerView = footerView
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -61,12 +66,28 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
     
     //UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        
+        return tableDataSource?.numberOfItems() ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        return UITableViewCell(style: .Default, reuseIdentifier: "")
+        guard let cell = tableView.dequeueReusableCellIdentifier(TableViewCellIdentifier.Tweet) as? TweetTableViewCell,
+            let tweet = tableDataSource?.itemAtIndex(indexPath.item) as? Tweet else {
+                return UITableViewCell(style: .Default, reuseIdentifier: "")
+        }
+        
+        setupTweetCell(cell, tweet: tweet)
+        
+        return cell
+    }
+    
+    func setupTweetCell(cell:TweetTableViewCell, tweet: Tweet) {
+        cell.userNameLabel.text = tweet.user.userName
+        cell.userIdLabel.text = "@"+tweet.user.userAtName
+        cell.tweetTextLabel.text = tweet.text
+        cell.dateLabel.text = "\(tweet.tweetDate)"
+        cell.showAvatar = settingsManager?.showAvatar ?? false
     }
     
     //UITableViewDelegate
@@ -83,5 +104,32 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
         //eventHandler?.selectTweetAction(tweet)
     }
     
+    //ListViewInterface
+    func addItemsAtIndexes(indexSet:NSIndexSet) {
+        let indexPaths = indextSetToIndextPathArray(indexSet)
+        tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Bottom)
+    }
+    
+    func reloadItems() {
+        tableView.reloadData()
+    }
+    
+    func showDownloadAtBottom() {
+        footerView.state = .Downloading
+    }
+    
+    func hideDownloadAtBottom() {
+        footerView.state = .Idle
+    }
+    
+    //Helpers
+    func indextSetToIndextPathArray(indexSet:NSIndexSet)->[NSIndexPath] {
+        
+        var indexPathArray: [NSIndexPath] = []
+        indexSet.enumerateIndexesUsingBlock { (index, _) in
+            indexPathArray.append(NSIndexPath(forItem: index, inSection: 0))
+        }
+        return indexPathArray
+    }
 
 }

@@ -13,7 +13,10 @@ import TwitterKit
 
 class TwitterAPIManager {
     
-    typealias TweetsRequestCompletion = ([Tweet], NSError?)->Void
+    //[Tweet] - result tweets array
+    //Bool - true if no more tweets available
+    //NSError - error in case of error
+    typealias TweetsRequestCompletion = ([Tweet], Bool, NSError?)->Void
     
     //https://dev.twitter.com/rest/reference/get/statuses/home_timeline
     enum HomeTimelineParameter: String {
@@ -23,7 +26,7 @@ class TwitterAPIManager {
     }
     
     
-    var numberOfTweetsToRetrieve = 20
+    var numberOfTweetsToRetrieve = 50
     
     
     static let sharedInstance = TwitterAPIManager()
@@ -69,31 +72,21 @@ class TwitterAPIManager {
     
     //Home timeline
     //https://dev.twitter.com/rest/reference/get/statuses/home_timeline
-    func getHomeTimelineTweetsOlderThan(oldestTweetId: UInt64?, completion:TweetsRequestCompletion) throws{
+    func getHomeTimelineTweets(maxTweetId: UInt64?, sinceTweetId: UInt64?, completion:TweetsRequestCompletion) throws{
         
-        var parameters: [NSObject : AnyObject] = [HomeTimelineParameter.Count.rawValue : numberOfTweetsToRetrieve]
+        var parameters: [NSObject : AnyObject] = [HomeTimelineParameter.Count.rawValue : "\(numberOfTweetsToRetrieve)"]
         
-        if let actualOldestTweetId = oldestTweetId {
-            parameters[HomeTimelineParameter.MaxId.rawValue] = "\(actualOldestTweetId - 1)"
+        if let actualSinceTweetId = sinceTweetId {
+            parameters[HomeTimelineParameter.SinceId.rawValue] = "\(actualSinceTweetId)"
+        }
+        
+        if let actualMaxTweetId = maxTweetId {
+            parameters[HomeTimelineParameter.MaxId.rawValue] = "\(actualMaxTweetId - 1)"
         }
         
         try getHomeTimelineTweets(parameters, completion: completion)
     }
     
-    func getHomeTimelineTweetsYoungerThan(youngestTweetId: UInt64?, completion:TweetsRequestCompletion) throws{
-        
-        var parameters: [NSObject : AnyObject] = [HomeTimelineParameter.Count.rawValue : "\(numberOfTweetsToRetrieve)"]
-        
-        if let actualYoungestTweetId = youngestTweetId {
-            parameters[HomeTimelineParameter.SinceId.rawValue] = "\(actualYoungestTweetId)"
-        }
-        
-        if let actualTopId = tweetStorage?.topTwitterId {
-            parameters[HomeTimelineParameter.MaxId.rawValue] = "\(actualTopId - 1)"
-        }
-        
-        try getHomeTimelineTweets(parameters, completion: completion)
-    }
     
     private func getHomeTimelineTweets(parameters:[NSObject : AnyObject], completion:TweetsRequestCompletion) throws{
         if (!isLoggedIn) {
@@ -109,19 +102,21 @@ class TwitterAPIManager {
         
         TWTRAPIClient.clientWithCurrentUser().sendTwitterRequest(urlRequest) { (urlResponse, data, error) in
             if let actualError = error {
-                completion([], actualError)
+                completion([],false, actualError)
             }else{
                 guard let actualData = data else {
-                    completion([], TwitterAPIManagerError.UnableToParseResponse.error())
+                    completion([], false, TwitterAPIManagerError.UnableToParseResponse.error())
                     return
                 }
                 
                 do {
                     
                     guard let jsonArray = try NSJSONSerialization.JSONObjectWithData(actualData, options: []) as? [[String : AnyObject]] else {
-                        completion([], TwitterAPIManagerError.UnableToParseResponse.error())
+                        completion([], false, TwitterAPIManagerError.UnableToParseResponse.error())
                         return
                     }
+                    
+                    let noMore = jsonArray.count < self.numberOfTweetsToRetrieve
                     
                     var tweetsArray:[Tweet] = []
                     
@@ -133,10 +128,10 @@ class TwitterAPIManager {
                     
                     self.tweetStorage?.addTweets(tweetsArray)
                     
-                    completion(tweetsArray, nil)
+                    completion(tweetsArray, noMore, nil)
                     
                 }catch {
-                    completion([], TwitterAPIManagerError.UnableToParseResponse.error())
+                    completion([], false, TwitterAPIManagerError.UnableToParseResponse.error())
                 }
                 
             }

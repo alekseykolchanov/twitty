@@ -12,33 +12,19 @@ class ListInteractor {
     
     var twitterApiManager: TwitterAPIManager?
     
-    func getTweetsBefore(beforeTweetId:UInt64?, completion:([Tweet], NSError?)->Void) {
+    func getHomeTweets(maxTweetId: UInt64?, sinceTweetId: UInt64?, completion:([Tweet], Bool, NSError?)->Void) {
         do {
-            try twitterApiManager?.getHomeTimelineTweetsOlderThan(beforeTweetId, completion: { (tweets, error) in
-                completion(tweets, error)
+            try twitterApiManager?.getHomeTimelineTweets(maxTweetId, sinceTweetId: sinceTweetId, completion: { (tweets, noMore, error) in
+                completion(tweets, noMore, error)
             })
         }catch{
             if let nserror = error as? NSError {
-                completion([], nserror)
+                completion([], false, nserror)
             }
             
             //TODO: Convert NSErrorType to NSError
-            completion([], nil)
+            completion([], false, nil)
         }
     }
     
-    func getTweetsAfter(afterTweetId:UInt64?, completion:([Tweet], NSError?)->Void) {
-        do {
-            try twitterApiManager?.getHomeTimelineTweetsYoungerThan(afterTweetId, completion: { (tweets, error) in
-                completion(tweets, error)
-            })
-        }catch{
-            if let nserror = error as? NSError {
-                completion([], nserror)
-            }
-            
-            //TODO: Convert NSErrorType to NSError
-            completion([], nil)
-        }
-    }
 }

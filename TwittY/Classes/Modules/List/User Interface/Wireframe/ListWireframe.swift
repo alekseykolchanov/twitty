@@ -17,8 +17,10 @@ class ListWireframe: BaseWireframe {
     func presentListInterfaceFromWindow(window: UIWindow) {
         let viewController = listViewControllerFromStoryboard()
         viewController.eventHandler = listPresenter
+        viewController.tableDataSource = listPresenter
+        viewController.settingsManager = SettingsManager.sharedInstance
         listViewController = viewController
-//        listPresenter!.userInterface = viewController
+        listPresenter?.userInterface = viewController
         rootWireframe?.showRootViewController(viewController, inWindow: window)
     }
     

@@ -10,10 +10,12 @@ import UIKit
 
 class TweetTableViewCell: UITableViewCell {
 
-    let defaultHorizontalDistance: CGFloat = 12.0
-    let imageViewSize: CGFloat = 51.0
-    let imageViewCornerRadius: CGFloat = 5.0
+    private let defaultHorizontalDistance: CGFloat = 12.0
+    private let imageViewSize: CGFloat = 51.0
+    private let imageViewCornerRadius: CGFloat = 5.0
     
+    var tweetId: UInt64?
+    var userAvatarUrl: String?
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userIdLabel: UILabel!
@@ -47,7 +49,7 @@ class TweetTableViewCell: UITableViewCell {
         contentView.addSubview(imageView)
         avatarImageView = imageView
         
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-\(defaultHorizontalDistance)-[imageView(\(imageViewSize))]-\(defaultHorizontalDistance)-[userNameLabel]", options: [], metrics: nil, views: ["imageView" : imageView, "userNameLabel" : userNameLabel]))
+        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-\(defaultHorizontalDistance)-[imageView(\(imageViewSize))]", options: [], metrics: nil, views: ["imageView" : imageView, "userNameLabel" : userNameLabel]))
         contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[imageView(\(imageViewSize))]-(>=\(defaultHorizontalDistance))-|", options: [], metrics: nil, views: ["imageView" : imageView]));
         contentView.addConstraint(NSLayoutConstraint(item: imageView, attribute: .Top, relatedBy: .Equal, toItem: userNameLabel, attribute: .Top, multiplier: 1.0, constant: 0.0))
         
